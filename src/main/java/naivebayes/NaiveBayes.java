@@ -7,13 +7,13 @@ import weka.filters.unsupervised.attribute.StringToWordVector;
 import weka.classifiers.bayes.NaiveBayesMultinomial;
 import weka.classifiers.*;
 
-public class NaiveBayesWeka {
+public class NaiveBayes {
 
     private String filename;
     private Instances data;
     private Classifier cl;
 
-    public NaiveBayesWeka(String filename) {
+    public NaiveBayes(String filename) {
         this.filename = filename;
         readData();
     }
