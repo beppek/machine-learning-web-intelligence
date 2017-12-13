@@ -9,6 +9,14 @@ public class NaiveBayesClassifier implements Classifier {
     private int instanceCount;
     private Map<String, Double> classValues = new HashMap<>();
     private Map<String, Map<String, Map<String, Double>>> frequencyTable = new HashMap<>();
+    private String name;
+
+    /**
+     * @param classifierName Name of classifier to show what data it is classifying
+     * */
+    public NaiveBayesClassifier(String classifierName) {
+        this.name = classifierName;
+    }
 
     public void train(Dataset train) {
         //Get class values
@@ -92,6 +100,6 @@ public class NaiveBayesClassifier implements Classifier {
 
     @Override
     public String toString() {
-        return frequencyTable.toString();
+        return name;
     }
 }

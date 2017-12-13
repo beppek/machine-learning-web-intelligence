@@ -14,7 +14,7 @@ public class NaiveBayesMain {
         //Now train my implementation on the fifa set
         File file = new File("data/FIFA_skill_nominal.arff");
         String absolutePath = file.getAbsolutePath();
-        Evaluator evaluator = new Evaluator(new NaiveBayesClassifier(), absolutePath);
+        Evaluator evaluator = new Evaluator(new NaiveBayesClassifier(file.getName()), absolutePath);
         evaluator.evaluateWholeSet();
         evaluator.evaluateCV();
     }
