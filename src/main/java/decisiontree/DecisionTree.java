@@ -12,39 +12,26 @@ public class DecisionTree {
     private Instances data;
     private Classifier cl;
 
-    DecisionTree(String path) {
+    DecisionTree(String path) throws Exception {
         this.path = path;
         readData();
     }
 
-    public void train() {
-        try {
-            cl = new J48();
-            cl.buildClassifier(data);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void train() throws Exception {
+        cl = new J48();
+        cl.buildClassifier(data);
     }
 
-    public void test() {
-        try {
-            Evaluation eval = new Evaluation(data);
-            eval.crossValidateModel(cl, data, 10, new java.util.Random(1));
-            System.out.println(eval.toSummaryString());
-            System.out.println(eval.toMatrixString());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void test() throws Exception {
+        Evaluation eval = new Evaluation(data);
+        eval.crossValidateModel(cl, data, 10, new java.util.Random(1));
+        System.out.println(eval.toSummaryString());
+        System.out.println(eval.toMatrixString());
     }
 
-    private void readData() {
-        ConverterUtils.DataSource source = null;
-        try {
-            source = new ConverterUtils.DataSource(path);
-            data = source.getDataSet();
-            data.setClassIndex(3);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private void readData() throws Exception {
+        ConverterUtils.DataSource source = new ConverterUtils.DataSource(path);
+        data = source.getDataSet();
+        data.setClassIndex(3);
     }
 }
