@@ -7,13 +7,18 @@ import core.Result;
 
 import java.util.ArrayList;
 
-public class Kernel implements Classifier {
+public class KernelMethodClassifier implements Classifier {
 
     private Dataset data;
     private double offset;
+    private String name;
 
-    public void train(Dataset data) {
-        this.data = data;
+    KernelMethodClassifier(String name) {
+        this.name = name;
+    }
+
+    public void train(Dataset train) {
+        this.data = train;
         ArrayList<Instance> l0 = new ArrayList<>();
         ArrayList<Instance> l1 = new ArrayList<>();
 
@@ -66,5 +71,10 @@ public class Kernel implements Classifier {
             }
         }
         return sum;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
