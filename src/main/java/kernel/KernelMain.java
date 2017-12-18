@@ -12,5 +12,6 @@ public class KernelMain {
         Evaluator evaluator = new Evaluator(new KernelMethodClassifier("KernelMethodClassifier"), absolutePath);
 
         evaluator.evaluateWholeSet();
+        evaluator.evaluateCV();
     }
 }
